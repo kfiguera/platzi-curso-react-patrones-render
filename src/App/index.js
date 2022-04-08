@@ -44,36 +44,26 @@ function App() {
             <TodoList
                 error = {error}
                 loading = {loading}
+                totalTodos = {totalTodos}
                 searchedTodos = {searchedTodos}
-
+                searchText = {searchValue}
                 onError={() => <TodosError/>}
                 onLoading={() => <TodosLoading/>}
                 onEmptyTodos={() => <EmptyTodos/>}
-                render={(todo) => (
-                    <TodoItem
-                        key={todo.id}
-                        text={todo.text}
-                        completed={todo.completed}
-                        onComplete={() => completeTodo(todo.id)}
-                        onDelete={() => deleteTodo(todo.id)}
-                    />
-                )}
-            />
-            {/*<TodoList>
-                {error && <TodosError/>}
-                {loading && <TodosLoading/>}
-                {(!loading && !searchedTodos.length) && <EmptyTodos/>}
-
-                {searchedTodos.map(todo => (
-                    <TodoItem
-                        key={todo.text}
-                        text={todo.text}
-                        completed={todo.completed}
-                        onComplete={() => completeTodo(todo.text)}
-                        onDelete={() => deleteTodo(todo.text)}
-                    />
-                ))}
-            </TodoList>*/}
+                onEmptySearchResults={(searchText2) => <p> No hay resultados para <b>"{searchText2}"</b> </p>}
+            >
+                {
+                    (todo) => (
+                        <TodoItem
+                            key={todo.id}
+                            text={todo.text}
+                            completed={todo.completed}
+                            onComplete={() => completeTodo(todo.id)}
+                            onDelete={() => deleteTodo(todo.id)}
+                        />
+                    )
+                }
+            </TodoList>
 
             {!!openModal && (
                 <Modal>

@@ -29,7 +29,6 @@ function useTodos(props) {
 
     const addTodo = (text) => {
         const newTodos = [...todos];
-
         newTodos.push({
             id: uuidv4(),
             completed: false,
