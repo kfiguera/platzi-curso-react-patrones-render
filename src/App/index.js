@@ -12,6 +12,7 @@ import {CreateTodoButton} from '../CreateTodoButton';
 import {Modal} from '../Modal';
 import {TodoCounter} from "../TodoCounter";
 import {TodoSearch} from "../TodoSearch";
+import {ChangeAlertWithStorageListener} from "../ChangeAlert";
 
 function App() {
     const {
@@ -42,15 +43,15 @@ function App() {
                 />
             </TodoHeader>
             <TodoList
-                error = {error}
-                loading = {loading}
-                totalTodos = {totalTodos}
-                searchedTodos = {searchedTodos}
-                searchText = {searchValue}
+                error={error}
+                loading={loading}
+                totalTodos={totalTodos}
+                searchedTodos={searchedTodos}
+                searchText={searchValue}
                 onError={() => <TodosError/>}
                 onLoading={() => <TodosLoading/>}
                 onEmptyTodos={() => <EmptyTodos/>}
-                onEmptySearchResults={(searchText2) => <p> No hay resultados para <b>"{searchText2}"</b> </p>}
+                onEmptySearchResults={(searchText2) => <p> No hay resultados para <b>"{searchText2}"</b></p>}
             >
                 {
                     (todo) => (
@@ -77,6 +78,7 @@ function App() {
             <CreateTodoButton
                 setOpenModal={setOpenModal}
             />
+            <ChangeAlertWithStorageListener/>
         </React.Fragment>
     );
 }
